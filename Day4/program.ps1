@@ -21,9 +21,13 @@ foreach ($i in $inp) {
     Write-Host $r2
     if ( $r1allin -or $r2allin){
         $allincounter += 1
-        Write-Host ":)"
+        Write-Host " All-In - :) | Part-In - :)" -ForegroundColor Green
+    } elseif ($cmp -gt 0) {
+        Write-Host " All-In - :(" -NoNewline -ForegroundColor Red
+        Write-Host " | " -NoNewline
+        Write-Host "Part-In - :)" -ForegroundColor Green
     } else {
-        Write-Host ":("
+        Write-Host " All-In - :( | Part-In - :(" -ForegroundColor Red
     }
 }
 Write-Host "Part one answer is: $allincounter"
