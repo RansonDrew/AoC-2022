@@ -1,4 +1,4 @@
-##--- Day 8: Treetop Tree House ---  
+## --- Day 8: Treetop Tree House ---  
 The expedition comes across a peculiar patch of tall trees all planted carefully in a grid. The Elves explain that a previous expedition planted these trees as a reforestation effort. Now, they're curious if this would be a good location for a tree house.  
   
 First, determine whether there is enough tree cover here to keep a tree house hidden. To do this, you need to count the number of trees that are visible from outside the 
@@ -6,11 +6,11 @@ grid when looking directly along a row or column.
   
 The Elves have already launched a quadcopter to generate a map with the height of each tree (your puzzle input). For example:  
   
->30373  
->25512  
->65332  
->33549  
->35390  
+30373  
+25512  
+65332  
+33549  
+35390  
 Each tree is represented as a single digit whose value is its height, where 0 is the shortest and 9 is the tallest.  
   
 A tree is visible if all of the other trees between it and an edge of the grid are shorter than it. Only consider trees in the same row or column; that is, only look up, 
@@ -34,7 +34,7 @@ Your puzzle answer was 1854.
   
 The first half of this puzzle is complete! It provides one gold star: *  
   
-##--- Part Two ---  
+## --- Part Two ---  
 Content with the amount of tree cover available, the Elves just need to know the best spot to build their tree house: they would like to be able to see a lot of trees.  
   
 To measure the viewing distance from a given tree, look up, down, left, and right from that tree; stop if you reach an edge or at the first tree that is the same height 
@@ -45,11 +45,11 @@ see higher than the tree house anyway.
   
 In the example above, consider the **middle 5 in the second row**:  
   
->30373  
->25**5**12  
->65332  
->33549  
->35390  
+30373  
+25**5**12  
+65332  
+33549  
+35390  
 Looking **up**, its view is not blocked; it can see **1** tree (of height 3).  
 Looking **left**, its view is blocked immediately; it can see only **1** tree (of height 5, right next to it).  
 Looking **right**, its view is not blocked; it can see **2** trees.  
@@ -59,11 +59,11 @@ A tree's **scenic score is found by multiplying together its viewing distance in
   
 However, you can do even better: consider the tree of height **5 in the middle of the fourth row**:  
   
->30373  
->25512  
->65332  
->33**5**49  
->35390  
+30373  
+25512  
+65332  
+33**5**49  
+35390  
 Looking **up**, its view is blocked at **2** trees (by another tree with a height of 5).  
 Looking **left**, its view is not blocked; it can see **2** trees.  
 Looking **down**, its view is also not blocked; it can see **1** tree.  
@@ -73,204 +73,3 @@ This tree's scenic score is **8** (2 * 2 * 1 * 2); this is the ideal spot for th
 Consider each tree on your map. What is the highest scenic score possible for any tree?  
   
 Answer: 527340  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
->>>>>>> 29e7084 (Day 8 Done)
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
