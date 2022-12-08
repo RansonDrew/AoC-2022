@@ -7,11 +7,11 @@ grid when looking directly along a row or column.
 The Elves have already launched a quadcopter to generate a map with the height of each tree (your puzzle input). For example:  
   
 |-|-|-|-|-|
-|3|0|3|7|3|  
-|2|5|5|1|2|  
-|6|5|3|3|2|  
-|3|3|5|4|9|  
-|3|5|3|9|0|  
+|3|0|3|7|3|
+|2|5|5|1|2|
+|6|5|3|3|2|
+|3|3|5|4|9|
+|3|5|3|9|0|
 Each tree is represented as a single digit whose value is its height, where 0 is the shortest and 9 is the tallest.  
   
 A tree is visible if all of the other trees between it and an edge of the grid are shorter than it. Only consider trees in the same row or column; that is, only look up, 
