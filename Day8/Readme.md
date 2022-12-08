@@ -6,11 +6,12 @@ grid when looking directly along a row or column.
   
 The Elves have already launched a quadcopter to generate a map with the height of each tree (your puzzle input). For example:  
   
-30373  
-25512  
-65332  
-33549  
-35390  
+|-|-|-|-|-|
+|3|0|3|7|3|  
+|2|5|5|1|2|  
+|6|5|3|3|2|  
+|3|3|5|4|9|  
+|3|5|3|9|0|  
 Each tree is represented as a single digit whose value is its height, where 0 is the shortest and 9 is the tallest.  
   
 A tree is visible if all of the other trees between it and an edge of the grid are shorter than it. Only consider trees in the same row or column; that is, only look up, 
@@ -44,12 +45,12 @@ The Elves don't care about distant trees taller than those found by the rules ab
 see higher than the tree house anyway.  
   
 In the example above, consider the **middle 5 in the second row**:  
-  
-30373  
-25**5**12  
-65332  
-33549  
-35390  
+|-|-|-|-|-|  
+|3|0|3|7|3|  
+|2|5|**5**|1|2|  
+|6|5|3|3|2|  
+|3|3|5|4|9|  
+|3|5|3|9|0|  
 Looking **up**, its view is not blocked; it can see **1** tree (of height 3).  
 Looking **left**, its view is blocked immediately; it can see only **1** tree (of height 5, right next to it).  
 Looking **right**, its view is not blocked; it can see **2** trees.  
@@ -58,12 +59,12 @@ A tree's **scenic score is found by multiplying together its viewing distance in
 2 * 2).  
   
 However, you can do even better: consider the tree of height **5 in the middle of the fourth row**:  
-  
-30373  
-25512  
-65332  
-33**5**49  
-35390  
+|-|-|-|-|-|  
+|3|0|3|7|3|  
+|2|5|5|1|2|  
+|6|5|3|3|2|  
+|3|3|**5**|4|9|  
+|3|5|3|9|0|  
 Looking **up**, its view is blocked at **2** trees (by another tree with a height of 5).  
 Looking **left**, its view is not blocked; it can see **2** trees.  
 Looking **down**, its view is also not blocked; it can see **1** tree.  
