@@ -101,6 +101,7 @@ function Move-RopeEnd {
     return @{x=$RopeEnd.x;y=$RopeEnd.y}   
 }
 
+$sw = [System.Diagnostics.Stopwatch]::StartNew()
 $inp = Get-Content ./Day9/input.txt
 
 $movelist = $inp | Select-Object -Property @{Name='Direction';Expression={$_.Split(' ')[0]}},@{Name='Distance';Expression={$_.Split(' ')[1]}}
@@ -111,42 +112,46 @@ $t = ConvertFrom-RopeNode $RopeNodes[$RopeNodes.count - 1]
 
 $visited = [System.Collections.ArrayList]::new()
 $visited.Add($t) > $null
-
+$loopcount = 1
 foreach ($move in $movelist) {
-    Write-Debug "Moving head $($move.Direction) - $($move.Distance) Times."
+    $loopprogress = $loopcount / $movelist.Count * 100
+    if(($loopprogress % 1) -eq 0) {Write-Progress -Activity "Making Moves..." -Status "$loopprogress% Complete:" -PercentComplete $loopprogress}
     foreach ($s in (1..$move.Distance)) {
         # iterate through an object for each step inthe distance variable
         # move the head node ($ropenodes[0])
-        Write-Debug "   Moving Head Node from $(ConvertFrom-RopeNode $RopeNodes[0]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[0] $Move.Direction))"
-        # Move-RopeEnd $RopeNodes[0] $Move.Direction
+        #Write-Debug "   Moving Head Node from $(ConvertFrom-RopeNode $RopeNodes[0]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[0] $Move.Direction))"
+        Move-RopeEnd $RopeNodes[0] $Move.Direction > $null
         for ($n = 1; $n -lt $RopeNodes.Count; $n++) {
             # for each subsequent node in the rope, check if it needs to be moved and move it if necessary
             # find the difference in coordinates 
             $delta = Compare-RopePositions $RopeNodes[$n - 1] $RopeNodes[$n]
             # check if this node needs to move
             if($(Test-RopeNodeTooFar $delta)){
-                Write-Debug "      Moving Node $n from $(ConvertFrom-RopeNode $RopeNodes[$n]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)))"
-                # Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)
+                #Write-Debug "      Moving Node $n from $(ConvertFrom-RopeNode $RopeNodes[$n]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)))"
+                Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta) > $null
             }            
         }
         # at this point, all nodes should be checked and moved
         # check to see if the tail moved
         if ($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1]) -ne $t) {
             # add it to the $visited array
-            Write-Debug "      *** TAIL MOVED! ***"
+            #Write-Debug "      *** TAIL MOVED! ***"
             if (!($visited.Contains($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1])))) {
                 $visited.Add($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1])) > $null    
             }
             $t = ConvertFrom-RopeNode $RopeNodes[$RopeNodes.count - 1]
         }
     } 
+    $loopcount = $loopcount + 1
 }
 
+Write-Progress -Activity "Making Moves..." -Completed
 $poscount = $visited.Count
 Write-Host "Part 1 Answer is $poscount"
+Write-Host "Part 1 took $($sw.ElapsedMilliseconds) Milliseconds to run."
 
 # part 2 - because I'm too tired of this puzzle to spend more time functionalizing the logic
-
+$sw = [System.Diagnostics.Stopwatch]::StartNew()
 $RopeNodes = [System.Collections.ArrayList]::new()
 foreach ($i in (1..10)) {
     $RopeNodes.Add(@{x=1;y=1}) > $null    
@@ -157,35 +162,40 @@ $t = ConvertFrom-RopeNode $RopeNodes[$RopeNodes.count - 1]
 $visited = [System.Collections.ArrayList]::new()
 $visited.Add($t) > $null
 
+$loopcount = 1
 foreach ($move in $movelist) {
-    Write-Debug "Moving head $($move.Direction) - $($move.Distance) Times."
+    $loopprogress = $loopcount / $movelist.Count * 100
+    if(($loopprogress % 1) -eq 0) {Write-Progress -Activity "Making Moves..." -Status "$loopprogress% Complete:" -PercentComplete $loopprogress}
     foreach ($s in (1..$move.Distance)) {
         # iterate through an object for each step inthe distance variable
         # move the head node ($ropenodes[0])
-        Write-Debug "   Moving Head Node from $(ConvertFrom-RopeNode $RopeNodes[0]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[0] $Move.Direction))"
-        # Move-RopeEnd $RopeNodes[0] $Move.Direction
+        #Write-Debug "   Moving Head Node from $(ConvertFrom-RopeNode $RopeNodes[0]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[0] $Move.Direction))"
+        Move-RopeEnd $RopeNodes[0] $Move.Direction > $null
         for ($n = 1; $n -lt $RopeNodes.Count; $n++) {
             # for each subsequent node in the rope, check if it needs to be moved and move it if necessary
             # find the difference in coordinates 
             $delta = Compare-RopePositions $RopeNodes[$n - 1] $RopeNodes[$n]
             # check if this node needs to move
             if($(Test-RopeNodeTooFar $delta)){
-                Write-Debug "      Moving Node $n from $(ConvertFrom-RopeNode $RopeNodes[$n]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)))"
-                # Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)
+                #Write-Debug "      Moving Node $n from $(ConvertFrom-RopeNode $RopeNodes[$n]) to $(ConvertFrom-RopeNode $(Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta)))"
+                Move-RopeEnd $RopeNodes[$n] $(Get-ChaseDirection $delta) > $null
             }            
         }
         # at this point, all nodes should be checked and moved
         # check to see if the tail moved
         if ($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1]) -ne $t) {
             # add it to the $visited array
-            Write-Debug "      *** TAIL MOVED! ***"
+            #Write-Debug "      *** TAIL MOVED! ***"
             if (!($visited.Contains($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1])))) {
                 $visited.Add($(ConvertFrom-RopeNode $RopeNodes[$RopeNode.Count - 1])) > $null    
             }
             $t = ConvertFrom-RopeNode $RopeNodes[$RopeNodes.count - 1]
         }
     } 
+    $loopcount = $loopcount + 1
 }
+Write-Progress -Activity "Making Moves..." -Completed
 
 $poscount = $visited.Count
 Write-Host "Part 2 Answer is $poscount"
+Write-Host "Part 2 took $($sw.ElapsedMilliseconds) Milliseconds to run."
