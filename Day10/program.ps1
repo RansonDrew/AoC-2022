@@ -1,22 +1,6 @@
 $inp = Get-Content ./Day10/input.txt |
     Select-Object @{Name="Op";Expression={$_.Split(' ')[0]}},@{Name="Val";Expression={$_.Split(' ')[1]}}
 
-function Draw-SpritePosition {
-    param (
-        $SpriteArray
-    )
-    $sprite_crt_row = ""
-    for ($i = 0; $i -lt 40; $i++) {
-        if ($SpriteArray -contains $i) {
-            $sprite_crt_row += "#"
-        
-        } else {
-        $sprite_crt_row += "."
-        }
-    }
-    return $sprite_crt_row
-}
-
 $x = 1
 $base_cycle = 20
 
@@ -25,21 +9,12 @@ $instruction_number = 1
 $signal_sum = 0
 foreach ($instruction in $inp) {
     $cycle = $cycle + 1
-    #Write-Debug "Instruction number: $instruction_number"
-    #Write-Debug "   Operation is $($instruction.Op) - Cycle is $($cycle - 20)"
     if (($cycle % 40) -eq 0) {
-        #Write-Debug " *** Key Cycle is $($cycle - 20) Operation is '$($instruction.Op)'***"
-        #Write-Debug " $($cycle - 20) * $x = $($($cycle - 20)*$x)"
-        Write-Host "Cycle: $($cycle - 20) * Register: $x = Signal Strength: $($($cycle - 20)*$x)"
         $signal_sum = $signal_sum + ($cycle - 20)*$x
     }
     if ($instruction.op -eq 'addx') {
         $cycle = $cycle + 1
-        #Write-Debug "   Operation is $($instruction.Op) - Cycle is $($cycle - 20)"
         if (($cycle % 40) -eq 0) {
-            #Write-Debug " *** Key Cycle is $($cycle - 20) Operation is '$($instruction.Op)'***"
-            #Write-Debug " $($cycle - 20) * $x = $($($cycle - 20)*$x)"
-            Write-Host "Cycle: $($cycle - 20) * Register: $x = Signal Strength: $($($cycle - 20)*$x)"
             $signal_sum = $signal_sum + ($cycle - 20)*$x
         }
         $x = $x + $instruction.Val
@@ -82,7 +57,6 @@ foreach ($instruction in $inp) {
             $current_crt_row = ""
             $crt_pos = 0
         }
-        
     }
 }
 Write-Host "Part 2 Answer:"
