@@ -1,5 +1,5 @@
 #read the input from a text file
-$inp = Get-Content ./Day8/input.txt
+$inp = Get-Content ./Day08/input.txt
 
 function Test-Direction {
     <#A function to test the visibility and generate the scenic score for a direction
