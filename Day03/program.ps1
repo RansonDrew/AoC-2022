@@ -34,7 +34,7 @@ function Find-CommonItem {
 }
 
 
-$sacks = Get-Content ./Day3/input.txt
+$sacks = Get-Content ./Day03/input.txt
 $p1total = 0
  foreach ($i in $sacks) {
      $p1total += Get-ItemPriority $(Find-CommonItem $i)
