@@ -1,4 +1,4 @@
-$intext = Get-Content ./Day6/input.txt
+$intext = Get-Content ./Day06/input.txt
   
 $srchindx = 0
 # starting at the 0th index grab string of four and compare it to a regex searching for all unique charaters
