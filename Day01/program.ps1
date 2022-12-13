@@ -6,7 +6,7 @@ $jncalinv = $calinv -join ","
 # this gives an array of comma separated values for each elf
 $spcalinv = $jncalinv -split ",,"
 With This: #>
-$spcalinv = $(Get-Content ./Day1/input.txt -Raw).Split("`n`n")
+$spcalinv = $(Get-Content ./Day01/input.txt -Raw).Split("`n`n")
 
 $hi1 = 0
 $hi2 = 0
