@@ -102,7 +102,7 @@ function Move-RopeEnd {
 }
 
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
-$inp = Get-Content ./Day9/input.txt
+$inp = Get-Content ./Day09/input.txt
 
 $movelist = $inp | Select-Object -Property @{Name='Direction';Expression={$_.Split(' ')[0]}},@{Name='Distance';Expression={$_.Split(' ')[1]}}
 $RopeNodes = [System.Collections.ArrayList]::new()
