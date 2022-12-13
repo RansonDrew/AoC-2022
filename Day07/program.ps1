@@ -2,7 +2,7 @@ $sw = [System.Diagnostics.Stopwatch]::StartNew()
 
 # I hate how slowly this runs, but it works. There definitely has to be a more efficient way to index the directory object array,
 # but I wasted a lot of time this morning playing around with classes and then abandoning them as too complicated.
-$inp = Get-Content ./Day7/input.txt
+$inp = Get-Content ./Day07/input.txt
 
 $dirs = [System.Collections.ArrayList]::new()
 $currentdirectory = ''
