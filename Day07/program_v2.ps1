@@ -1,6 +1,6 @@
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
 # Got rid of some of the ineffcient pipelines and took the execution time from 3300 ms to 300 ms
-$inp = Get-Content ./Day7/input.txt
+$inp = Get-Content ./Day07/input.txt
 
 $dirs = [System.Collections.ArrayList]::new()
 $currentdirectory = ''
