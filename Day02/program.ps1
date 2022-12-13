@@ -97,7 +97,7 @@ function get-neededchoice {
 }
 
 
-$rnds = get-content ./Day2/input.txt
+$rnds = get-content ./Day02/input.txt
 
 $p1score = 0
 
