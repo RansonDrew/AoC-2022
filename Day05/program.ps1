@@ -29,8 +29,8 @@ function Load-CrateStacks {
 }
 
 # Parse the input text into the stack drawing and the move list.
-$stackstxt = $($(Get-Content ./Day5/input.txt) -join ',').Split(',,')[0].Split(',')
-$movestxt  = $($(Get-Content ./Day5/input.txt) -join ',').Split(',,')[1].Split(',')
+$stackstxt = $($(Get-Content ./Day05/input.txt) -join ',').Split(',,')[0].Split(',')
+$movestxt  = $($(Get-Content ./Day05/input.txt) -join ',').Split(',,')[1].Split(',')
 
 # Convert the move text rows into CSV text and load them into an object
 for ($i = 0; $i -lt $movestxt.Count; $i++) {
